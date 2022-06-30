@@ -7,11 +7,17 @@ https://github.com/zerodeleo/
 
 <hr>
 
-### INTRO
-- Run "npm i"
-- Run "npm start"
+### **INTRO**
+```shell
+    npm i
+    npm start
+```
+- Hooks under the Hoods is trying to simplify the way hooks work behind the scenes
+- App.js is simulating a React component and its hooks by pure JS
+- Read this README and consider it when following App.js
+<br>
 
-### STEP 1 - Introduction to useState
+### **STEP 1** - Introduction to useState
 
 - Consider the following **codesnippet** and its **console**. <br>
 - If we log **useState**, without calling it, we'll notice that it returns a **dispatcher**.<br>
@@ -39,7 +45,7 @@ To solve this, the useState function is returned from a resolver**
 
 <hr>
 
-### STEP 2 - Resolving the Dispatcher for useState
+### **STEP 2** - Resolving the Dispatcher for useState
 
 - Consider the following **codesnippet** <br>
       - We already know (by looking at above console) that the **resolver** of the dispatcher **returns** the **useState function** in an object. <br>
@@ -90,7 +96,7 @@ const Component = () => {
 
 <hr>
 
-### STEP 3 - Understanding the arguments of a **Hook setter dispatch**
+### **STEP 3** - Understanding the arguments of a **Hook setter dispatch**
 
 - Consider following codesnippet and lets look at the **arguments** to a **dispatcher** of **setAnyHook**<br>
 ```javascript
@@ -134,7 +140,7 @@ const basicHookReducer = (newState, action) => {
 }
 ```
 
-### STEP 4 - Resolving the Dispatcher for setState
+### **STEP 4** - Resolving the Dispatcher for setState
 
 - Now we know that the **setState** function takes two arguments, **newState** and **action**<br>
 
@@ -168,8 +174,28 @@ undefined
 ```
 
 - We now know that the setState doesn't return anything. So what does the setState do?
-- We know that the dispatch of the setState does most of the job
+    - The answer has already been answered (in a simplified context), see summary
 
-*thank you*<br>
+# SUMMARY
+```shell
+describe('resolveDispatcher')
+    it('should return a dispatch object with all actions included')
+    it('should prevent the state object from being a getter')
+describe('useState (the resolver)')
+    it('should return the state object and the setter for that state')
+    it('should not return the state object as a getter')
+describe('setState')
+    it('should not return anything')
+    it('should call on a hook reducer')
+    it('should update the state through memoization')
+describe('render (the resolver)')
+    it('should run the component and render it')
+describe('render (the dispatcher)')
+    it('should call the render action from resolverDispatcher')
+describe('useState (the dispatcher)')
+    it('should call the useState action from resolverDispatcher')
+```
+
+*THANK YOU:*<br>
 *https://www.the-guild.dev/blog/react-hooks-system*<br>
 *https://www.youtube.com/watch?v=RnwqU9dqTr4*

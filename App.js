@@ -4,13 +4,11 @@ const basicHookReducer = (newState, action) => {
 
 // 
 const resolveDispatcher = (() => {
-    // TODO: create hook array to accept more than 1 hook
     let _state;
 
     const useState = (initialState) => {
         let state = _state || initialState;
         const setState = (newState, action) => {
-            // TODO: queueify the state
             _state = basicHookReducer(newState, action);
         }
         return [state, setState]
@@ -22,7 +20,11 @@ const resolveDispatcher = (() => {
         return fiber;
     }
 
-    return { useState, render };
+    return { 
+        useState, 
+        render, 
+        //... 
+    };
 })();
 
 const useState = (initialState) => {
@@ -36,7 +38,6 @@ const render = (Component) => {
 }
 
 const App = () => {
-    //TODO: setCount cannot be called with a second argument until 'action' is defined in basicHookReducer
     const [count, setCount] = useState(1);
     return {
         render: () => console.log(count),
@@ -47,10 +48,10 @@ const App = () => {
 // Simulating app on reload
 var app = render(App);
 
-// Simulating a click in the app and when it renders 
+// Simulating a click in the app
 app.click();
 var app = render(App);
 
-// Simulating a click in the app and when it renders 
+// Simulating another click in the app
 app.click();
 var app = render(App);

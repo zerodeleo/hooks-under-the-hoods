@@ -6,7 +6,7 @@
   "author": "zerodeleo <julia.stjerna@hotmail.se>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon App.js"
   },
   "dependencies": {
     "nodemon": "^2.0.18"
