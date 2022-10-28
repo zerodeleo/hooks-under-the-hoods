@@ -110,13 +110,13 @@ const dispatchSetAnyHook = (fiber, queue, action) => {
 - **the Hook queue**<br>
       - The **state** below is actually a nested **queue**:<br>
 ```javascript
-const state: 
+const state = 
 {
       foo: 'foo',
       bar: 'bar',
       baz: 'baz',
 }
-const stateAsQueue:
+const stateAsQueue =
 {
       memoizedState: 'foo',
       next: {
